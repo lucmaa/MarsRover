@@ -34,4 +34,8 @@ endmacro()
 add_subdirectory(tests)
 
 add_executable(rover
-        src/main.cpp)
+        src/main.cpp
+        src/Rover.cpp
+        src/Rover.h
+        src/Command.cpp
+        src/Command.h)
