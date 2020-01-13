@@ -30,4 +30,33 @@ LMLMLMLMM<br/>
 MMRMMRMRRM 
 ##### 期待的输出：
 1 3 N<br/>
-5 1 E<br/>    
+5 1 E<br/>
+
+# Practice Summary 
+
+## command pattern
+
+command accept context (this)
+
+## interpreter pattern
+
+
+# 第二部分
+
+由于高原四面悬崖，当火星探测器移动超越高原的正方形边界的时候，会导致火星探测器坠毁，并且永远消失。然而在火星探测器消失的同时，火星探测器会在坠毁前的位置留下一个标记，用来防止后续的探测器坠毁。
+
+这个信号包括一组坐标和方位，表示火星探测器消失前的位置。当下一个火星探测器处于一个信号标记点的时候，火星探测器会拒绝一切会导致当前火星探测器坠毁的指令。
+
+当一个火星探测器坠毁的时候，应该在输出火星探测器最后的位置和方向后，输出RIP（Rest In Peace）
+### 输入&输出样例
+##### 期待的输入:
+5 5<br/>
+1 2 N<br/>
+LMLMLMLMM<br/>
+3 3 E<br/>
+MMRMMRMRRM<br/>
+4 1 S<br/> MLMLMRMRM<br/> 
+##### 期待的输出：
+1 3 N<br/>
+5 1 E RIP<br/>    
+5 0 S
