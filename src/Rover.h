@@ -6,7 +6,6 @@
 #define MARSROVER_ROVER_H
 
 
-#include <vector>
 #include "Command.h"
 
 class Command;
@@ -23,11 +22,10 @@ public:
     ~Rover();
 
     Position current_pos();
-    void accept(std::vector<std::shared_ptr<Command>> &cmd);
+    void execute(const std::shared_ptr<Command> &cmd);
     void turn_left();
     void turn_right();
     void march();
-    void move();
 
 
     int X()  {return p.x;};
@@ -36,7 +34,6 @@ public:
 
 private:
     Position p;
-    std::vector<std::shared_ptr<Command>> commands;
 };
 
 

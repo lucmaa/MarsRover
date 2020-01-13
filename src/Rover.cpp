@@ -29,18 +29,8 @@ Position Rover::current_pos() {
     return p;
 }
 
-void Rover::accept(std::vector<std::shared_ptr<Command>> &cmd) {
-    commands = cmd;
-
-    for (const auto &c : commands) {
-        c->bind(this);
-    }
-}
-
-void Rover::move() {
-    for (const auto &c : commands) {
-        c->execute();
-    }
+void Rover::execute(const std::shared_ptr<Command> &cmd) {
+    cmd->execute(*this);
 }
 
 void Rover::turn_right() {

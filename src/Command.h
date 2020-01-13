@@ -15,29 +15,26 @@ class Rover;
 
 class Command {
 public:
-    void bind(Rover *rover);
-    virtual void execute() = 0;
-
-public:
-    std::shared_ptr<Rover *> r;
+    virtual ~Command() = default;
+    virtual void execute(Rover &r) = 0;
 };
 
 
 class LCommand : public Command {
 public:
-    void execute();
+    void execute(Rover &r);
 };
 
 
 class RCommand : public Command {
 public:
-    void execute();
+    void execute(Rover &r);
 };
 
 
 class MCommand : public Command {
 public:
-    void execute();
+    void execute(Rover &r);
 };
 
 

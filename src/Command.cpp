@@ -6,21 +6,16 @@
 #include "Command.h"
 
 
-void Command::bind(Rover *rover) {
-    r = std::make_shared<Rover *>(rover);
+void LCommand::execute(Rover &r) {
+    r.turn_left();
 }
 
 
-void LCommand::execute() {
-    (*r)->turn_left();
+void RCommand::execute(Rover &r) {
+    r.turn_right();
 }
 
 
-void RCommand::execute() {
-    (*r)->turn_right();
-}
-
-
-void MCommand::execute() {
-    (*r)->march();
+void MCommand::execute(Rover &r) {
+    r.march();
 }
