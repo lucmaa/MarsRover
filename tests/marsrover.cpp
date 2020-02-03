@@ -3,7 +3,7 @@
 //
 
 #include <gtest/gtest.h>
-#include "../src/Rover.h"
+#include "../src/Mars.h"
 
 using namespace std;
 
@@ -44,3 +44,15 @@ TEST(MarsRover, should_march_one_step_when_command_is_M) {
     EXPECT_EQ(r.current_pos().y, 1);
 }
 
+TEST(MarsRover, should_create_mars_with_5x5_highland) {
+    Mars m({5, 5});
+    MCommand c;
+
+    Rover * r = m.create_rover();
+
+    r->execute(std::make_shared<MCommand>(c));
+
+    EXPECT_EQ(r->current_pos().d, 'N');
+    EXPECT_EQ(r->current_pos().x, 0);
+    EXPECT_EQ(r->current_pos().y, 1);
+}

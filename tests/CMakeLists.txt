@@ -3,6 +3,7 @@ include_directories(../src)
 
 gtest(marsrover
         marsrover.cpp
+        ../src/Mars.cpp
         ../src/Rover.cpp
         ../src/Command.cpp
 )
