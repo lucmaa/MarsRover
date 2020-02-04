@@ -38,4 +38,4 @@ add_executable(rover
         src/rover.cpp
         src/rover.h
         src/command.cpp
-        src/command.h src/mars.h src/mars.cpp src/state.cpp src/state.h)
+        src/command.h src/mars.h src/mars.cpp src/state.cpp src/state.h src/highland.h)

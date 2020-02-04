@@ -39,6 +39,12 @@ public:
 };
 
 
+class EOC: public Command {
+public:
+    void execute(State *s);
+};
+
+
 class CommandQueue {
 public:
     void execute() {};

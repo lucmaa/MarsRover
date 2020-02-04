@@ -7,33 +7,47 @@
 
 
 #include "command.h"
+#include "highland.h"
 
 class Command;
 class State;
 
-struct Position {
+enum Direction {
+    NORTH = 0,
+    EAST,
+    SOUTH,
+    WEST,
+    INVALID
+};
+
+typedef struct Position {
     int x;
     int y;
-    char d;
-};
+    Direction d;
+} Position;
 
 class Rover {
     friend class NormalState;
+    friend class DeadState;
 public:
     Rover(int x = 0, int y = 0, char d = 'N');
     ~Rover();
 
-    Position current_pos();
-    void transform(State *state);
     void execute(const std::shared_ptr<Command> &cmd);
-
-    int X()  {return p.x;};
-    int Y()  {return p.y;};
-    char D() {return p.d;};
+    char D();
+    std::string logger();
+    int X();
+    int Y();
 
 private:
+    void check_state();
+    Direction char2direction(char d);
+
+private:
+    static bool danger_zone[HIGHLAND_HEIGHT][HIGHLAND_WIDTH][4];
     Position p;
     State *s;
+    std::string log;
 };
 
 #endif //MARSROVER_ROVER_H

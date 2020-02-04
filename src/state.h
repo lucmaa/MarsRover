@@ -16,6 +16,7 @@ public:
     virtual void left() {};
     virtual void right() {};
     virtual void pace() {};
+    virtual void message() {};
 
 protected:
     Rover *r;
@@ -23,10 +24,13 @@ protected:
 
 class DeadState : public State {
 public:
+    DeadState(Rover *rover);
+    void message();
 };
 
 class SuspendedState : public State {
 public:
+    SuspendedState(Rover *rover);
 };
 
 class NormalState : public State {

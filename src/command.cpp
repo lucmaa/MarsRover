@@ -19,3 +19,8 @@ void RCommand::execute(State *s) {
 void MCommand::execute(State *s) {
     s->pace();
 }
+
+
+void EOC::execute(State *s) {
+    s->message();
+}

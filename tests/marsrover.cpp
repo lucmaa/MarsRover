@@ -3,7 +3,7 @@
 //
 
 #include <gtest/gtest.h>
-#include "../src/mars.h"
+#include "../src/rover.h"
 
 using namespace std;
 
@@ -21,7 +21,7 @@ TEST(MarsRover, should_turn_left_when_command_is_L) {
 
     r.execute(std::make_shared<LCommand>(c));
 
-    EXPECT_EQ(r.current_pos().d, 'W');
+    EXPECT_EQ(r.D(), 'W');
 }
 
 TEST(MarsRover, should_turn_right_when_command_is_R) {
@@ -30,7 +30,7 @@ TEST(MarsRover, should_turn_right_when_command_is_R) {
 
     r.execute(std::make_shared<RCommand>(c));
 
-    EXPECT_EQ(r.current_pos().d, 'E');
+    EXPECT_EQ(r.D(), 'E');
 }
 
 TEST(MarsRover, should_march_one_step_when_command_is_M) {
@@ -39,20 +39,18 @@ TEST(MarsRover, should_march_one_step_when_command_is_M) {
 
     r.execute(std::make_shared<MCommand>(c));
 
-    EXPECT_EQ(r.current_pos().d, 'N');
-    EXPECT_EQ(r.current_pos().x, 0);
-    EXPECT_EQ(r.current_pos().y, 1);
+    EXPECT_EQ(r.D(), 'N');
+    EXPECT_EQ(r.X(), 0);
+    EXPECT_EQ(r.Y(), 1);
 }
 
-TEST(MarsRover, should_create_mars_with_5x5_highland) {
-    Mars m({5, 5});
-    MCommand c;
+TEST(MarsRover, should_rest_in_peace_when_loc_0_0_S_t_then_pace) {
+    Rover r(0, 0, 'S');
+    MCommand c1;
+    EOC c2;
 
-    Rover r;
+    r.execute(std::make_shared<MCommand>(c1));
+    r.execute(std::make_shared<EOC>(c2));
 
-    r.execute(std::make_shared<MCommand>(c));
-
-    EXPECT_EQ(r.current_pos().d, 'N');
-    EXPECT_EQ(r.current_pos().x, 0);
-    EXPECT_EQ(r.current_pos().y, 1);
+    EXPECT_EQ(r.logger(), "0 0 S RIP");
 }
