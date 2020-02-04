@@ -6,9 +6,10 @@
 #define MARSROVER_ROVER_H
 
 
-#include "Command.h"
+#include "command.h"
 
 class Command;
+class State;
 
 struct Position {
     int x;
@@ -17,16 +18,14 @@ struct Position {
 };
 
 class Rover {
+    friend class NormalState;
 public:
     Rover(int x = 0, int y = 0, char d = 'N');
     ~Rover();
 
     Position current_pos();
+    void transform(State *state);
     void execute(const std::shared_ptr<Command> &cmd);
-    void turn_left();
-    void turn_right();
-    void march();
-
 
     int X()  {return p.x;};
     int Y()  {return p.y;};
@@ -34,7 +33,7 @@ public:
 
 private:
     Position p;
+    State *s;
 };
-
 
 #endif //MARSROVER_ROVER_H

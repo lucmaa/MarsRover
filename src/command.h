@@ -8,33 +8,34 @@
 
 #include <string>
 #include <memory>
-#include "Rover.h"
+#include "rover.h"
 
 struct Position;
 class Rover;
+class State;
 
 class Command {
 public:
     virtual ~Command() = default;
-    virtual void execute(Rover &r) = 0;
+    virtual void execute(State *s) = 0;
 };
 
 
 class LCommand : public Command {
 public:
-    void execute(Rover &r);
+    void execute(State *s);
 };
 
 
 class RCommand : public Command {
 public:
-    void execute(Rover &r);
+    void execute(State *s);
 };
 
 
 class MCommand : public Command {
 public:
-    void execute(Rover &r);
+    void execute(State *s);
 };
 
 

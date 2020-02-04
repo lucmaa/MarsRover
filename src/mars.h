@@ -5,7 +5,7 @@
 #ifndef MARSROVER_MARS_H
 #define MARSROVER_MARS_H
 
-#include "Rover.h"
+#include "rover.h"
 
 typedef struct Highland {
     int w;
@@ -16,8 +16,6 @@ class Mars {
 public:
     Mars(const Highland l);
     ~Mars();
-
-    Rover * create_rover();
 
 private:
     Highland land;

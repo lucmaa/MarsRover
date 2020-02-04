@@ -3,7 +3,7 @@
 //
 
 #include <gtest/gtest.h>
-#include "../src/Mars.h"
+#include "../src/mars.h"
 
 using namespace std;
 
@@ -48,11 +48,11 @@ TEST(MarsRover, should_create_mars_with_5x5_highland) {
     Mars m({5, 5});
     MCommand c;
 
-    Rover * r = m.create_rover();
+    Rover r;
 
-    r->execute(std::make_shared<MCommand>(c));
+    r.execute(std::make_shared<MCommand>(c));
 
-    EXPECT_EQ(r->current_pos().d, 'N');
-    EXPECT_EQ(r->current_pos().x, 0);
-    EXPECT_EQ(r->current_pos().y, 1);
+    EXPECT_EQ(r.current_pos().d, 'N');
+    EXPECT_EQ(r.current_pos().x, 0);
+    EXPECT_EQ(r.current_pos().y, 1);
 }

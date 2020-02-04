@@ -35,7 +35,7 @@ add_subdirectory(tests)
 
 add_executable(rover
         src/main.cpp
-        src/Rover.cpp
-        src/Rover.h
-        src/Command.cpp
-        src/Command.h src/Mars.h src/Mars.cpp)
+        src/rover.cpp
+        src/rover.h
+        src/command.cpp
+        src/command.h src/mars.h src/mars.cpp src/state.cpp src/state.h)
