@@ -7,4 +7,5 @@ gtest(marsrover
         ../src/rover.cpp
         ../src/command.cpp
         ../src/state.cpp
+        ../src/context.cpp
 )

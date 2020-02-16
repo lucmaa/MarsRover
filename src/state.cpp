@@ -17,8 +17,7 @@ DeadState::DeadState(Rover *rover) {
 }
 
 void DeadState::message() {
-    r->log = std::to_string(r->X()) + " " +
-             std::to_string(r->Y()) + " " + r->D() + " RIP";
+    r->log = std::to_string(r->X()) + " " + std::to_string(r->Y()) + " " + r->D() + " RIP";
 }
 
 SuspendedState::SuspendedState(Rover *rover) {
@@ -60,4 +59,8 @@ void NormalState::pace() {
         r->p.y -= 1;
     else if (WEST == r->p.d)
         r->p.x -= 1;
+}
+
+void NormalState::message() {
+    r->log = std::to_string(r->X()) + " " + std::to_string(r->Y()) + " " + r->D();
 }

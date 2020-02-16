@@ -6,21 +6,21 @@
 #include "state.h"
 
 
-void LCommand::execute(State *s) {
+void LeftCommand::execute(State *s) {
     s->left();
 }
 
 
-void RCommand::execute(State *s) {
+void RightCommand::execute(State *s) {
     s->right();
 }
 
 
-void MCommand::execute(State *s) {
+void MoveCommand::execute(State *s) {
     s->pace();
 }
 
 
-void EOC::execute(State *s) {
+void RogerCommand::execute(State *s) {
     s->message();
 }

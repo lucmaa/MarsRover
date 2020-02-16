@@ -8,6 +8,7 @@
 
 #include "command.h"
 #include "highland.h"
+#include "context.h"
 
 class Command;
 class State;
@@ -33,7 +34,7 @@ public:
     Rover(int x = 0, int y = 0, char d = 'N');
     ~Rover();
 
-    void execute(const std::shared_ptr<Command> &cmd);
+    void execute(Context &ctx);
     char D();
     std::string logger();
     int X();

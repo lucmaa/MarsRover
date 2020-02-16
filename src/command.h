@@ -21,34 +21,29 @@ public:
 };
 
 
-class LCommand : public Command {
+class LeftCommand : public Command {
 public:
     void execute(State *s);
 };
 
 
-class RCommand : public Command {
+class RightCommand : public Command {
 public:
     void execute(State *s);
 };
 
 
-class MCommand : public Command {
+class MoveCommand : public Command {
 public:
     void execute(State *s);
 };
 
 
-class EOC: public Command {
+class RogerCommand: public Command {
 public:
     void execute(State *s);
 };
 
-
-class CommandQueue {
-public:
-    void execute() {};
-};
 
 
 #endif //MARSROVER_COMMAND_H

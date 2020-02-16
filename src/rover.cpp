@@ -4,6 +4,7 @@
 
 #include "rover.h"
 #include "state.h"
+#include "context.h"
 
 bool Rover::danger_zone[HIGHLAND_HEIGHT][HIGHLAND_WIDTH][4] = { false };
 
@@ -48,12 +49,13 @@ void Rover::check_state() {
     }
 }
 
-void Rover::execute(const std::shared_ptr<Command> &cmd) {
-    check_state();
+void Rover::execute(Context &ctx) {
+    for (auto const &cmd : ctx.get_command_list()) {
+        check_state();
 
-    if (s)
-    {
-        s->execute(cmd);
+        if (s) {
+            s->execute(cmd);
+        }
     }
 }
 

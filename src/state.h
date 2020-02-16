@@ -40,6 +40,7 @@ public:
     void left();
     void right();
     void pace();
+    void message();
 };
 
 #endif //MARSROVER_STATE_H
