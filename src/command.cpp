@@ -17,7 +17,7 @@ void RightCommand::execute(State *s) {
 
 
 void MoveCommand::execute(State *s) {
-    s->pace();
+    s->move();
 }
 
 

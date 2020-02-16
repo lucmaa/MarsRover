@@ -28,8 +28,10 @@ typedef struct Position {
 } Position;
 
 class Rover {
+    friend class State;
     friend class NormalState;
     friend class DeadState;
+    friend class AlertState;
 public:
     Rover(int x = 0, int y = 0, char d = 'N');
     ~Rover();
@@ -50,5 +52,10 @@ private:
     State *s;
     std::string log;
 };
+
+inline std::string Rover::logger() {
+    return log;
+}
+
 
 #endif //MARSROVER_ROVER_H

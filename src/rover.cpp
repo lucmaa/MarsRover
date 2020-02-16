@@ -34,18 +34,25 @@ Direction Rover::char2direction(char d) {
 }
 
 void Rover::check_state() {
-    if (p.x > HIGHLAND_WIDTH || p.y > HIGHLAND_HEIGHT || p.x < 0 || p.y < 0) {
+    if (s->current_state() != STATE::NORMAL_STATE)
+        return;
+
+    if (true == danger_zone[p.y][p.x][p.d]) {
+        delete s;
+        s = new AlertState(this);
+        return;
+    } else if (p.x > HIGHLAND_WIDTH || p.y > HIGHLAND_HEIGHT || p.x < 0 || p.y < 0) {
         delete s;
         s = new DeadState(this);
 
         // back to the last position
-        if (p.x > HIGHLAND_WIDTH)  { p.x = HIGHLAND_WIDTH; return; }
-        if (p.y > HIGHLAND_HEIGHT) { p.y = HIGHLAND_HEIGHT; return; }
-        if (p.x < 0) { p.x = 0; return; }
-        if (p.y < 0) { p.y = 0; return; }
-    } else if (true == danger_zone[p.y][p.x][p.d]) {
-        delete s;
-        s = new SuspendedState(this);
+        if (p.x > HIGHLAND_WIDTH) { p.x = HIGHLAND_WIDTH; }
+        if (p.y > HIGHLAND_HEIGHT) { p.y = HIGHLAND_HEIGHT; }
+        if (p.x < 0) { p.x = 0; }
+        if (p.y < 0) { p.y = 0; }
+
+        if (!danger_zone[p.y][p.x][p.d])
+            danger_zone[p.y][p.x][p.d] = true;
     }
 }
 
@@ -75,8 +82,4 @@ char Rover::D() {
         case WEST:  return 'W';
         default: return -1;
     }
-}
-
-std::string Rover::logger() {
-    return log;
 }

@@ -10,37 +10,51 @@
 class Command;
 class Rover;
 
+enum class STATE {
+    NORMAL_STATE,
+    ALERT_STATE,
+    DEAD_STATE
+};
+
 class State {
 public:
     void execute(const std::shared_ptr<Command> &cmd);
-    virtual void left() {};
-    virtual void right() {};
-    virtual void pace() {};
-    virtual void message() {};
+    STATE current_state();
+    virtual void left();
+    virtual void right();
+    virtual void move();
+    virtual void message();
 
 protected:
     Rover *r;
+    STATE s;
 };
 
 class DeadState : public State {
 public:
     DeadState(Rover *rover);
+    void left() {};
+    void right() {};
+    void move() {};
     void message();
 };
 
-class SuspendedState : public State {
+class AlertState : public State {
 public:
-    SuspendedState(Rover *rover);
+    AlertState(Rover *rover);
+
+    void move();
 };
 
 class NormalState : public State {
 public:
     NormalState(Rover *rover);
-
-    void left();
-    void right();
-    void pace();
-    void message();
 };
+
+inline STATE State::current_state()
+{
+    return s;
+}
+
 
 #endif //MARSROVER_STATE_H
